@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -22,9 +23,12 @@ public class ProvinceScoreController {
     private ProvinceScoreDao provinceScoreDao;
 
     @GetMapping(path = "/all")
-    public Page<ProvinceScore> queryAll(String score, Integer page) {
+    public Page<ProvinceScore> queryAll(@RequestParam(defaultValue = "四川") String province, String studentType, String score, @RequestParam(defaultValue = "0") Integer page) {
         ProvinceScore order = new ProvinceScore();
-        order.setProvinceScore(score);
+        order.setVarScore(score);
+        order.setLocalProvince(province);
+        order.setStudentType(studentType);
+
         return provinceScoreDao.findAll(Example.of(order), PageRequest.of(page, 10));
     }
 }
