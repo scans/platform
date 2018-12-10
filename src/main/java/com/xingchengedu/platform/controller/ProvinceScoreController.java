@@ -25,7 +25,7 @@ public class ProvinceScoreController {
     @GetMapping(path = "/all")
     public Page<ProvinceScore> queryAll(@RequestParam(defaultValue = "四川") String province, String studentType, String score, @RequestParam(defaultValue = "0") Integer page) {
         ProvinceScore order = new ProvinceScore();
-        order.setVarScore(score);
+        //order.setVarScore(score);
         order.setLocalProvince(province);
         order.setStudentType(studentType);
 

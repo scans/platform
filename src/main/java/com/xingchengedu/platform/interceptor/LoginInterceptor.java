@@ -19,7 +19,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         if (null == request.getSession().getAttribute("user")) {
             Result rs = new Result();
-            rs.setErrorMessage("请登录");
+            rs.setErrorContext("请登录");
             rs.setSuccess(false);
 
             response.setCharacterEncoding("UTF-8");

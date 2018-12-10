@@ -1,44 +1,50 @@
 package com.xingchengedu.platform.util;
 
-/**
- * Created by chencheng on 2018/12/4.
- */
-public class Result<T> {
-    private Boolean success;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import java.io.Serializable;
+
+public class Result<T> implements Serializable {
+    private static final long serialVersionUID = -757959713205186605L;
+    private boolean success;
+    private String errorContext;
     private T resultObj;
-    private String errorMessage;
 
     public Result() {
     }
 
-    public static <T> Result<T> of(T t, Boolean flag) {
-        Result<T> rs = new Result<>();
-        rs.setSuccess(flag);
-        rs.setResultObj(t);
-        return rs;
+    public Result(boolean success, String errorContext, T resultObj) {
+        this.success = success;
+        this.errorContext = errorContext;
+        this.resultObj = resultObj;
     }
 
-    public Boolean getSuccess() {
-        return success;
+    public boolean isSuccess() {
+        return this.success;
     }
 
-    public void setSuccess(Boolean success) {
+    public void setSuccess(boolean success) {
         this.success = success;
     }
 
+    public String getErrorContext() {
+        return this.errorContext;
+    }
+
+    public void setErrorContext(String errorContext) {
+        this.errorContext = errorContext;
+    }
+
     public T getResultObj() {
-        return resultObj;
+        return this.resultObj;
     }
 
     public void setResultObj(T resultObj) {
         this.resultObj = resultObj;
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
 }

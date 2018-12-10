@@ -32,18 +32,30 @@ public class StudentController {
         Student order = new Student();
         order.setNumber(account);
         order.setPassword(password);
-        Optional<Student> optional = studentDao.findOne(Example.of(order));
 
+        //Optional<Student> optional = studentDao.findOne(Example.of(order));
+
+        //结果mock
+        Student student = new Student();
+        student.setId(1L);
+        student.setNumber("xcjy_0001");
+        student.setPassword("123456");
+        student.setHighSchool("四中");
+        student.setProvince("四川");
+        student.setQq("123");
+        student.setScore(588);
+        student.setStudentType("理科");
+        student.setYear("2017");
 
         Result<Student> rs = new Result<>();
-        if (optional.isPresent()) {
-            session.setAttribute("user", optional.get());
-            rs.setResultObj(optional.get());
-            rs.setSuccess(true);
-        } else {
-            rs.setSuccess(false);
-            rs.setErrorMessage("账号或密码错误");
-        }
+        //if (optional.isPresent()) {
+        session.setAttribute("user", student);
+        rs.setResultObj(student);
+        rs.setSuccess(true);
+        //} else {
+        //    rs.setSuccess(false);
+        //    rs.setErrorContext("账号或密码错误");
+        //}
 
         return rs;
     }
