@@ -12,6 +12,8 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
+    private String studentName;
+    @Column
     private String number;
     @Column
     private String password;
@@ -19,6 +21,8 @@ public class Student {
     private Integer enable;
     @Column
     private Integer score;
+    @Column
+    private Integer rank;
     @Column
     private String province;
     @Column
@@ -31,6 +35,22 @@ public class Student {
     private String qq;
 
     public Student() {
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public Integer getRank() {
+        return rank;
+    }
+
+    public void setRank(Integer rank) {
+        this.rank = rank;
     }
 
     public Long getId() {

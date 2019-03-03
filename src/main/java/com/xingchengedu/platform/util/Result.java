@@ -14,6 +14,10 @@ public class Result<T> implements Serializable {
     public Result() {
     }
 
+    public Result(boolean success) {
+        this.success = success;
+    }
+
     public Result(boolean success, String errorContext, T resultObj) {
         this.success = success;
         this.errorContext = errorContext;
